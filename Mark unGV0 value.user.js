@@ -28,7 +28,7 @@
     $(this).closest('tr').css('background-color', 'transparent');
     isSynOrValid = true;
   }
-  if (tabIndex % 8 === 0 && $(this).find('div').text().trim() !== '0.0' && !isSynOrValid) {
+  if (tabIndex % 8 === 0 && $(this).find('div').text().trim() > '0.0' && !isSynOrValid) {
     $(this).closest('tr').css('background-color', '#F0F8FF');
   }
 });
