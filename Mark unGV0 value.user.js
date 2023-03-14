@@ -27,7 +27,7 @@ $('td').each(function() {
   var tabIndex = $(this).attr('tabindex');
   if (tabIndex % 8 === 3 && $(this).find('span').text().match(/^(Synonym|Valid)$/i)) {
     isSynOrValid = true;
-  } else if (tabIndex % 8 === 0 && $(this).find('div').text().trim()  '0.0') {
+  } else if (tabIndex % 8 === 0 && $(this).find('div').text().trim() > '0.0') {
     if (isSynOrValid) {
       isSynOrValid = false;
     } else {
