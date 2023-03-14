@@ -22,14 +22,17 @@
 
   function refresh() {
   var isSynOrValid = false;
-  $('td').filter(function() {
+
+$('td').each(function() {
   var tabIndex = $(this).attr('tabindex');
-  if (tabIndex % 8 === 3 && $(this).find('span').text().match(/^(Synonym|Valid)$/i) && !isSynOrValid) {
-    $(this).closest('tr').css('background-color', 'transparent');
+  if (tabIndex % 8 === 3 && $(this).find('span').text().match(/^(Synonym|Valid)$/i)) {
     isSynOrValid = true;
-  }
-  if (tabIndex % 8 === 0 && $(this).find('div').text().trim() > '0.0' && !isSynOrValid) {
-    $(this).closest('tr').css('background-color', '#F0F8FF');
+  } else if (tabIndex % 8 === 0 && $(this).find('div').text().trim()  '0.0') {
+    if (isSynOrValid) {
+      isSynOrValid = false;
+    } else {
+      $(this).closest('tr').css('background-color', '#F0F8FF');
+    }
   }
 });
 
