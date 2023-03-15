@@ -31,7 +31,7 @@ $('td').each(function() {
     if (isSynOrValid) {
       isSynOrValid = false;
     } else {
-      $(this).closest('tr').css('background-color', '#F0F8FF');
+      $(this).closest('tr').css('background-color', '#F0F8FF');  //change color by deleting #F0F8FF and type the color codes https://htmlcolorcodes.com/
     }
   }
 });
