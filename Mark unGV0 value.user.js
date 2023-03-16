@@ -23,15 +23,21 @@
   function refresh() {
   var isSynOrValid = false;
 
-$('td').each(function() {
+$('td').filter(function() {
   var tabIndex = $(this).attr('tabindex');
-  if (tabIndex % 8 === 3 && $(this).find('span').text().match(/^(Synonym|Valid)$/i)) {
-    isSynOrValid = true;
-  } else if (tabIndex % 8 === 0 && $(this).find('div').text().trim() > '0.0') {
-    if (isSynOrValid) {
-      isSynOrValid = false;
+  if (tabIndex % 8 === 3) {
+    var spanText = $(this).find('span').text().trim();
+    if (spanText.match(/^(Synonym|Valid)$/i)) {
+      isSynOrValid = true;
     } else {
-      $(this).closest('tr').css('background-color', '#F0F8FF');  //change color by deleting #F0F8FF and type the color codes https://htmlcolorcodes.com/
+      isSynOrValid = false;
+    }
+  } else if (tabIndex % 8 === 0) {
+    var divText = $(this).find('div').text().trim();
+    if (divText > '0.0' && !$(this).find('span').text().match(/^(Synonym|Valid)$/i) && !isSynOrValid) {
+      $(this).closest('tr').css('background-color', '#F0F8FF'); //change color by deleting #F0F8FF and type the color codes https://htmlcolorcodes.com/
+    } else {
+      $(this).closest('tr').css('background-color', '');
     }
   }
 });
