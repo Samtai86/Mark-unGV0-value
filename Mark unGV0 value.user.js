@@ -36,9 +36,6 @@ $('td').filter(function() {
     if (divText > '0.0' && !$(this).find('span').text().match(/^(Synonym|Valid)$/i) && !isSynOrValid) {
       $(this).closest('tr').css('background-color', '#F0F8FF'); //change color by deleting #F0F8FF and type the color codes https://htmlcolorcodes.com/
     }
-    else {
-      $(this).closest('tr').css('background-color', '');
-    }
   }
 });
 
